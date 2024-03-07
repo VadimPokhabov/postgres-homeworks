@@ -5,7 +5,7 @@ CREATE TABLE customers
 (
 	customer_id text PRIMARY KEY,
 	company_name varchar(100) NOT NULL,
-	contact_name text
+	contact_name varchar
 );
 
 
@@ -14,16 +14,16 @@ CREATE TABLE employees
 	employee_id int PRIMARY KEY,
 	first_name varchar,
 	last_name varchar,
-	title text,
+	title varchar,
 	birth_date DATE,
-	notes text
+	notes varchar
 );
 
 
 CREATE TABLE orders
 (
 	order_id int PRIMARY KEY,
-	customer_id text REFERENCES customers(customer_id) NOT NULL,
+	customer_id varchar REFERENCES customers(customer_id) NOT NULL,
 	employee_id int REFERENCES employees(employee_id) NOT NULL,
 	order_date DATE,
 	ship_city varchar(10)
