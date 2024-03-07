@@ -39,12 +39,11 @@ conn_params = psycopg2.connect(host="localhost",
                                user="postgres",
                                password="Poxabov123"
                                )
-try:
-    with conn_params:
-        with conn_params.cursor() as cur:
-            cur.executemany("INSERT INTO customers VALUES (%s, %s, %s)", customer_list)
-            cur.executemany("INSERT INTO employees VALUES (%s, %s, %s, %s, %s, %s)", employee_list)
-            cur.executemany("INSERT INTO orders VALUES (%s, %s, %s, %s, %s)", orders_list)
-finally:
-    conn_params.close()
+
+with conn_params:
+    with conn_params.cursor() as cur:
+        cur.executemany("INSERT INTO customers VALUES (%s, %s, %s)", customer_list)
+        cur.executemany("INSERT INTO employees VALUES (%s, %s, %s, %s, %s, %s)", employee_list)
+        cur.executemany("INSERT INTO orders VALUES (%s, %s, %s, %s, %s)", orders_list)
+
 
